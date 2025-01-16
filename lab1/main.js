@@ -7,24 +7,21 @@ import VectorSource from 'ol/source/Vector';
 import OSM from 'ol/source/OSM';
 import { Feature } from 'ol';
 import { Point } from 'ol/geom';
-import { Circle, Fill, Stroke, Style, Text } from 'ol/style';
+import { Circle, Fill, Stroke, Style } from 'ol/style';
 
 const locations = [
-    { city: 'San Luis Obispo', coords: [-120.662139, 35.306449], count: 2 },
-    { city: 'San Francisco', coords: [-122.420908, 37.777804], count: 1 },
-    { city: 'Los Angeles', coords: [-118.380612, 34.059486], count: 3 },
-    //{ city: 'Salt Lake City', coords: [-111.884766, 40.749435], count: 1 },
+    { city: 'Fresno', coords: [-119.789064, 36.741618], count: 1 },
+    { city: 'San Francisco', coords: [-122.420908, 37.777804], count: 2 },
+    { city: 'Gardnerville, Nevada', coords: [-119.731994, 38.937779], count: 1 },
+    { city: 'Los Angeles', coords: [-118.380612, 34.059486], count: 1 },
+    { city: 'Folsom', coords: [-121.147826, 38.674677], count: 1 },
+
+    // Test coordinates
+    //{ city: 'Salt Lake City', coords: [-111.884766, 40.749435], count: 3 },
     //{ city: 'New York', coords: [-73.999786, 40.719038], count: 1 }
 ];
 
-// Calculate the center coords for the map display
-let totalX = 0, totalY = 0;
-for (const loc of locations) {
-    totalX += loc.coords[0];
-    totalY += loc.coords[1];
-}
-const centerCoords = [totalX / locations.length, totalY / locations.length];
-
+const calPolyCoords = [-120.663523, 35.303634]
 
 const vectorSource = new VectorSource();
 
@@ -57,8 +54,8 @@ const map = new Map({
         vectorLayer
     ],
     view: new View({
-        center: centerCoords,
-        zoom: 7,
+        center: calPolyCoords,
+        zoom: 16,
         projection: 'EPSG:4326'
     })
 });
